@@ -1,0 +1,124 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: radial-gradient(circle, #000, #111);
+  color: white;
+  font-family: 'Segoe UI', sans-serif;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+.container {
+  margin-top: 10%;
+}
+
+.glow {
+  font-size: 3rem;
+  text-shadow: 0 0 10px #ff00cc, 0 0 20px #ff00cc, 0 0 40px #ff00cc;
+  animation: flicker 1.5s infinite;
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+.gift-box {
+  font-size: 5rem;
+  margin-top: 30px;
+  cursor: pointer;
+  animation: bounce 1.5s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+#secretMessage {
+  margin-top: 30px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 20px;
+  backdrop-filter: blur(5px);
+  animation: fadeIn 2s forwards;
+}
+
+.hidden {
+  display: none;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.reveal-btn {
+  padding: 10px 20px;
+  margin-top: 20px;
+  border: none;
+  font-size: 1rem;
+  background: #ff00cc;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 0 10px #ff00cc;
+  transition: background 0.3s ease;
+}
+
+.reveal-btn:hover {
+  background: #ff3399;
+}
+
+.gallery {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-top: 40px;
+}
+
+.gallery img {
+  width: 250px;
+  height: auto;
+  border-radius: 15px;
+  box-shadow: 0 0 15px #ff00cc;
+  transition: transform 0.3s ease;
+}
+
+.gallery img:hover {
+  transform: scale(1.05);
+}
+
+.balloons {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+}
+
+.balloon {
+  width: 30px;
+  height: 40px;
+  border-radius: 50%;
+  position: absolute;
+  bottom: -100px;
+  animation: floatUp 10s infinite ease-in;
+  opacity: 0.7;
+}
+
+.balloon.red { background: #ff4d4d; left: 10%; animation-delay: 0s; }
+.balloon.blue { background: #4da6ff; left: 30%; animation-delay: 2s; }
+.balloon.green { background: #70ff70; left: 50%; animation-delay: 4s; }
+.balloon.yellow { background: #ffff66; left: 70%; animation-delay: 6s; }
+
+@keyframes floatUp {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-120vh); }
+}
+.hidden {
+  display: none !important;
+}
