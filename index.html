@@ -1,33 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>🌙💜 Starry Birthday Night</title>
   <style>
     body {
       margin: 0;
       padding: 0;
-      background: linear-gradient(to bottom, #120032, #2b1055);
-      color: white;
       font-family: 'Segoe UI', sans-serif;
+      background: #0e0034;
+      color: white;
       overflow-x: hidden;
       background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
+      background-repeat: repeat;
     }
+
     .container {
       padding: 60px 20px 40px;
       text-align: center;
+      z-index: 2;
+      position: relative;
     }
+
     h1.glow {
       font-size: 3rem;
       color: #fff;
       text-shadow: 0 0 15px #c44fff, 0 0 30px #e600ff;
       animation: flicker 2s infinite;
     }
+
     @keyframes flicker {
       0%, 100% { opacity: 1; }
       50% { opacity: 0.85; }
     }
+
     .gift-box, .reveal-btn, .song-btn {
       font-size: 1.2rem;
       padding: 16px 32px;
@@ -37,21 +44,21 @@
       border: 2px dashed #ff99ff;
       box-shadow: 0 0 15px #9f40ff;
       cursor: pointer;
-      transition: transform 0.3s, background 0.3s;
       margin: 30px auto;
       display: inline-block;
       animation: heartbeat 1.5s infinite;
+      transition: transform 0.3s, background 0.3s;
     }
+
     @keyframes heartbeat {
       0%, 100% { transform: scale(1); }
       50% { transform: scale(1.1); }
     }
-    .gift-box:hover, .reveal-btn:hover, .song-btn:hover {
-      background: linear-gradient(145deg, #a95dff, #6e00f7);
-    }
+
     .hidden {
       display: none;
     }
+
     .content-block {
       background: rgba(255, 255, 255, 0.08);
       padding: 30px;
@@ -62,29 +69,50 @@
       border: 2px solid #bb44ff;
       box-shadow: 0 0 25px #b822ff88;
     }
+
     .photo-block {
       display: flex;
       flex-direction: row;
       align-items: center;
       justify-content: center;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
       margin: 30px auto;
       gap: 20px;
       max-width: 960px;
     }
+
     .photo-block img {
-      width: 280px;
+      width: 45%;
+      max-width: 280px;
       border-radius: 15px;
       border: 2px solid #ff99ff;
       box-shadow: 0 0 18px #c44fff99;
     }
+
     .photo-caption {
       flex: 1;
-      max-width: 500px;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       color: #f0f0f0;
       text-align: left;
     }
+
+    @media screen and (max-width: 768px) {
+      .photo-block {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      .photo-caption {
+        text-align: center;
+      }
+    }
+
+    #aboutUsContainer p {
+      background: rgba(0,0,0,0.5);
+      padding: 10px;
+      border-radius: 10px;
+    }
+
     .balloons {
       position: fixed;
       top: 0;
@@ -92,8 +120,10 @@
       width: 100%;
       height: 100%;
       overflow: hidden;
-      z-index: -1;
+      z-index: 1;
+      pointer-events: none;
     }
+
     .balloon {
       width: 30px;
       height: 40px;
@@ -103,36 +133,25 @@
       animation: floatUp 12s infinite ease-in;
       opacity: 0.7;
     }
+
     .balloon.red { background: #ff4d4d; left: 12%; animation-delay: 0s; }
     .balloon.blue { background: #4da6ff; left: 28%; animation-delay: 2s; }
     .balloon.green { background: #70ff70; left: 44%; animation-delay: 4s; }
     .balloon.yellow { background: #ffff66; left: 60%; animation-delay: 6s; }
     .balloon.pink { background: #ff66cc; left: 76%; animation-delay: 8s; }
-    .moon, .star {
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      background: #fff;
-      opacity: 0.6;
-      animation: floatUp 20s linear infinite;
-    }
-    .moon { width: 30px; height: 30px; background: #ccc; }
+
     @keyframes floatUp {
       0% { transform: translateY(0); }
       100% { transform: translateY(-150vh); }
     }
-    #aboutUsContainer p {
-      background: rgba(0,0,0,0.5);
-      padding: 10px;
-      border-radius: 10px;
-    }
+
     #dancingDoll {
       width: 120px;
       animation: dance 1s infinite alternate;
       display: block;
       margin: 30px auto 0;
     }
+
     @keyframes dance {
       0% { transform: translateY(0); }
       100% { transform: translateY(-20px); }
@@ -147,50 +166,44 @@
 
     <div id="secretMessage" class="content-block hidden">
       <h2>🌠 Surprise! 🌠</h2>
-      <p>I want to make an Promise to you. On this special day That I'll Always Staty with you and Make you Happy all the time And The word I want to tell is I TRUST YOU and TRUST ME 💫 Love you Drling 💝</p>
+      <p>I TRUST YOU and TRUST ME 💫 Love you Drling 💝</p>
       <button class="reveal-btn" onclick="revealPhotos()">💖 Click for Another Sparkling Surprise</button>
     </div>
 
     <div id="photoSection" class="content-block hidden">
       <div class="photo-block">
         <img src="gundu-1.jpg" alt="Memory 1">
-        <div class="photo-caption">💝 A beautifull baby was born on 28.06.2007 is to make her world beauty and make her parents Proud. 💜
-        </div>
+        <div class="photo-caption">💕 Baby born on 28.06.2007 to make her world beautiful. 💜</div>
       </div>
       <div class="photo-block">
         <img src="gundu-2.jpg" alt="Memory 2">
-        <div class="photo-caption">🐻 And that cute little baby turned as a cute little Girl and become cuty and naughty. so cuteeeeee 🫂🙈. That sparkle in Her eyes. Its's Awesome 😍!
-        </div>
+        <div class="photo-caption">🐻 Cute baby became a naughty little girl with sparkle eyes. 😍</div>
       </div>
       <div class="photo-block">
         <img src="gundu-4.jpg" alt="Memory 3">
-        <div class="photo-caption">✨ And that baby Girl started to Go for the school and becomes a girl 🥰💕
-        </div>
+        <div class="photo-caption">✨ Started school, becoming even cuter. 🥰💕</div>
       </div>
       <div class="photo-block">
         <img src="gundu-5.jpg" alt="Memory 4">
-        <div class="photo-caption">🌾 Now that Baby girl becomes little girl and becomes a school girl and Now she Turned 18. Going for the College now She is big girl with the Good heart. 😘💜  
-        </div>
+        <div class="photo-caption">🌾 Turned 18, ready for college and bright future. 😘💜</div>
       </div>
       <div class="photo-block">
         <img src="gundu-3.jpg" alt="Memory 5">
-        <div class="photo-caption">🌟 That Teenage girl become more Cute and Making everyone Jealous and Turned as a big matured girl 🙈😂
-        </div>
+        <div class="photo-caption">⭐ Teen turned mature, making everyone jealous. 🙈😂</div>
       </div>
       <div class="photo-block">
         <img src="gundu-7.jpg" alt="Memory 6">
-        <div class="photo-caption">✨ And She have the Very Cute family with Nice Mom and dad and Cute Little Brother 💝.. Awwwww 🫂😍
+        <div class="photo-caption">✨ Cute family with loving parents and brother. 🥰😍</div>
       </div>
       <div class="photo-block">
         <img src="gundu-6.jpg" alt="Memory 7">
-        <div class="photo-caption">🌠 And finally she got locked with Her future Husband 😂 and Getting ready for the Marriage to make the Life more beautifull and we want to enjoy every little second With our Awaited life. one day we have it all 🫂🥰
-        </div>
+        <div class="photo-caption">✨ Locked with her future husband 😂 Getting ready for a beautiful life together. 🥰</div>
       </div>
     </div>
 
     <div id="aboutUsContainer" class="content-block hidden"></div>
     <button class="reveal-btn hidden" id="aboutUsBtn" onclick="showAboutUs()">📝 Show About Us</button>
-    <button class="song-btn hidden" id="songBtn" onclick="playSong()">🎂✨ Play Birthday Wish for Nishitha</button>
+    <button class="song-btn hidden" id="songBtn" onclick="playSong()">🎂✨ Play Birthday Song</button>
     <div id="dollContainer"></div>
     <audio id="bdaySong">
       <source src="happy-birthday-334876.mp3" type="audio/mp3">
@@ -203,21 +216,18 @@
     <div class="balloon green"></div>
     <div class="balloon yellow"></div>
     <div class="balloon pink"></div>
-    <div class="moon" style="left: 20%; animation-delay: 0s;"></div>
-    <div class="star" style="left: 35%; animation-delay: 5s;"></div>
-    <div class="star" style="left: 50%; animation-delay: 10s;"></div>
-    <div class="moon" style="left: 70%; animation-delay: 15s;"></div>
-    <div class="star" style="left: 85%; animation-delay: 20s;"></div>
   </div>
 
   <script>
     function openGift() {
       document.getElementById('secretMessage').classList.remove('hidden');
     }
+
     function revealPhotos() {
       document.getElementById('photoSection').classList.remove('hidden');
       document.getElementById('aboutUsBtn').classList.remove('hidden');
     }
+
     function showAboutUs() {
       const about = document.getElementById('aboutUsContainer');
       about.classList.remove('hidden');
@@ -230,11 +240,12 @@
         <p>Each laugh is a melody in my soul,</p>
         <p>You are my strength and my calm,</p>
         <p>Thank you for being my everything, Nishitha. 💖</p>
-        <p>And iam going to make you a Promise 💕 That one day WE HAVE IT ALL 💯 I Love you world 💖</p>`;
+        <p>I promise one day WE HAVE IT ALL 💯 I Love you world 💖</p>`;
 
       document.getElementById('aboutUsBtn').classList.add('hidden');
       document.getElementById('songBtn').classList.remove('hidden');
     }
+
     function playSong() {
       const song = document.getElementById('bdaySong');
       const dollContainer = document.getElementById('dollContainer');
